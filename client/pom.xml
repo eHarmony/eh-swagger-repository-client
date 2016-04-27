@@ -191,13 +191,6 @@
         </plugins>
     </build>
 
-    <scm>
-        <connection>scm:git:git@github.corp.eharmony.com:matching/eh-swagger-repository-client.git</connection>
-        <url>git@github.corp.eharmony.com:matchin/eh-swagger-repository-client.git</url>
-        <developerConnection>scm:git:git@github.corp.eharmony.com:matching/eh-swagger-repository-client.git
-        </developerConnection>
-    </scm>
-
     <distributionManagement>
         <!-- use the following if you're not using a snapshot version. -->
         <repository>
