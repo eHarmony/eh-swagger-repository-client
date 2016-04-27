@@ -1,5 +1,5 @@
 .idea/
 target/
-.*.iml
-model/*.iml
-client/*.iml
+*.iml
+model/eh-swagger-repository-model.iml
+client/eh-swagger-repository-client.iml
