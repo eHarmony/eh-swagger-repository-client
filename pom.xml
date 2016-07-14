@@ -4,7 +4,7 @@
 
     <groupId>com.eharmony.services</groupId>
     <artifactId>eh-swagger-repository-client-project</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>eh-swagger-repository-client-project</name>
     <packaging>pom</packaging>
 
