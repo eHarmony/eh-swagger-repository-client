@@ -13,6 +13,12 @@
         <name>eHarmony</name>
         <url>http://eharmony.com</url>
     </organization>
+    
+    <scm>
+        <connection>scm:git:git@github.com:eHarmony/eh-swagger-repository-client.git</connection>
+        <url>git@github.com:eHarmony/eh-swagger-repository-client.git</url>
+        <developerConnection>scm:git:git@github.com:eHarmony/eh-swagger-repository-client.git</developerConnection>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
