@@ -12,5 +12,11 @@
     	<module>model</module>
     	<module>client</module>
     </modules>
+    
+    <scm>
+        <connection>scm:git:git@github.com:eHarmony/eh-swagger-repository-client.git</connection>
+        <url>git@github.com:eHarmony/eh-swagger-repository-client.git</url>
+        <developerConnection>scm:git:git@github.com:eHarmony/eh-swagger-repository-client.git</developerConnection>
+    </scm>
 
 </project>
