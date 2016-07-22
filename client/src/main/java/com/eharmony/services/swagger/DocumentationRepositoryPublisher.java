@@ -28,8 +28,8 @@ import java.util.Objects;
 
 public class DocumentationRepositoryPublisher {
     private static final Logger LOG = LoggerFactory.getLogger(DocumentationRepositoryClient.class);
-    private static final String SWAGGER_SPEC_PATH = "%s/swagger.json";
-    private static final String SWAGGER_UI_PATH = "%s/swagger-ui";
+    private static final String SWAGGER_SPEC_PATH = "%sswagger.json";
+    private static final String SWAGGER_UI_PATH = "%sswagger-ui";
 
     /**
      * Creates a documentation object and passes it to the documentation repository client to save it.
@@ -61,9 +61,14 @@ public class DocumentationRepositoryPublisher {
                 documentation.setServiceName(beanConfig.getInfo().getTitle());
             }
 
+            String basePath = beanConfig.getBasePath();
+            if (!basePath.endsWith("/")) {
+                basePath += "/";
+            }
+
             documentation.setCategory(category);
-            documentation.setSwaggerUiUrl(String.format(SWAGGER_UI_PATH, beanConfig.getBasePath()));
-            documentation.setSwaggerSpecUrl(String.format(SWAGGER_SPEC_PATH, beanConfig.getBasePath()));
+            documentation.setSwaggerUiUrl(String.format(SWAGGER_UI_PATH, basePath));
+            documentation.setSwaggerSpecUrl(String.format(SWAGGER_SPEC_PATH, basePath));
             documentation.setEnvironment(lowerEnvironment);
             documentation.setServiceHost(beanConfig.getHost());
 

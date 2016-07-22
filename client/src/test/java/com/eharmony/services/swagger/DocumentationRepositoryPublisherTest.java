@@ -62,6 +62,37 @@ public class DocumentationRepositoryPublisherTest {
     }
 
     @Test
+    public void initializeDocumentationWithRootBasePathAndExpectSavedAndAllFieldsPopulated() throws IOException {
+        BeanConfig beanConfig = new BeanConfig();
+        beanConfig.setBasePath("/");
+        beanConfig.setDescription("Test Description");
+        beanConfig.setHost("testhost.com:1234");
+        beanConfig.setTitle("Test Service");
+
+        DocumentationRepositoryPublisher out = Mockito.spy(new DocumentationRepositoryPublisher());
+
+        DocumentationRepositoryClient mockClient = Mockito.mock(DocumentationRepositoryClient.class);
+        Mockito.doReturn(mockClient).when(out).createClient(HOST);
+
+        out.publish(beanConfig,
+                "Test",
+                "NP",
+                HOST);
+
+        ArgumentCaptor<Documentation> argumentCaptor = ArgumentCaptor.forClass(Documentation.class);
+        Mockito.verify(mockClient, Mockito.times(1)).saveDocumentationForService(argumentCaptor.capture());
+
+        Documentation savedDocumentation = argumentCaptor.getValue();
+        assertEquals(beanConfig.getTitle(), savedDocumentation.getServiceName());
+        assertEquals(beanConfig.getDescription(), savedDocumentation.getServiceDescription());
+        assertEquals(beanConfig.getHost(), savedDocumentation.getServiceHost());
+        assertEquals("/swagger-ui", savedDocumentation.getSwaggerUiUrl());
+        assertEquals("/swagger.json", savedDocumentation.getSwaggerSpecUrl());
+        assertEquals("Test", savedDocumentation.getCategory());
+        assertEquals("np", savedDocumentation.getEnvironment());
+    }
+
+    @Test
     public void postDocumentationWithExceptionAndExpectExceptionSwallowed() throws IOException {
         BeanConfig beanConfig = new BeanConfig();
 
